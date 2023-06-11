@@ -54,6 +54,7 @@ class ChatController extends Controller
 
 
             if ($group !== null){
+                $group->visit();
                 if (\Illuminate\Support\Facades\Gate::check('can_visit',$group)){
                     return view('chat.chat', compact('group_id','my_id','users','group'));
                 }else{

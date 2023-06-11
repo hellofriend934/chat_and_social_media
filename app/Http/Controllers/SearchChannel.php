@@ -23,7 +23,7 @@ class SearchChannel extends Controller
             $result = Channel::query()->where('category_id', $cat_id)->where('title', 'like', '%' . request()->get('s') . '%')->where('category_id', $cat_id)->with('categories')->select('title','id','slug')->sort()->get();
         }elseif ($request->get('cat')!=null && $request->get('s')== null){
             $cat_id = ChannelCategory::query()->where('title', $request->get('cat'))->value('id');
-            $result = Channel::query()->where('category_id', $cat_id)->sort()->with('categories')->select('title','id')->get();
+            $result = Channel::query()->where('category_id', $cat_id)->sort()->with('categories')->select('title','id','slug')->get();
         }
         if ($result === null)
         {

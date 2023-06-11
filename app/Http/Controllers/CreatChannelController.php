@@ -15,7 +15,7 @@ class CreatChannelController extends Controller
     public function __invoke(Request $request)
     {
 
-       $data =  $request->validate(['title'=>'string|min:1|max:20|required', 'category_id'=>'int|required', 'description'=>'string']);
+        $data =  $request->validate(['title'=>'string|min:1|max:20|required', 'category_id'=>'int|required', 'description'=>'string']);
         Channel::query()->create(['title'=>$data['title'], 'description'=>$data['description'], 'creater_id'=>auth()->id(),'category_id'=>$data['category_id']]);
         return redirect()->back();
     }

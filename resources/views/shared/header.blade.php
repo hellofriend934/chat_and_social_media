@@ -41,10 +41,23 @@
 {{--        </div>--}}
 {{--    </div>--}}
 {{--</nav>--}}
+
 <div class="navbar bg-base-100">
     <div class="flex-1">
         <a class="btn btn-ghost normal-case text-xl">chaty</a>
+
+        @if(!request()->is('messenger/*'))
+        <div id="app">
+            <notification-component></notification-component>
+        </div>
+        @endif
+        @if(isset(auth()->user()->status) && auth()->user()->status !== 'pro')
+        <a href="/billing" class="btn btn-outline btn-secondary ">get Pro</a>
+        @endif
     </div>
+@if(session()->has('new_message')) {{session()->get('new_message')}} @endif
+
+
 
     <form method="GET" action="{{route('search.profile')}}">
         <div class="form-control w-full max-w-xs">

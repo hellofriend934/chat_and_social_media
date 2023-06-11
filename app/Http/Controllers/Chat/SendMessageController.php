@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Chat;
 
 use App\Events\MessageEvent;
 use App\Events\MessageSent;
+use App\Events\NewMessageEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MessageRequest;
 use App\Http\Resources\MessageResource;
@@ -25,6 +26,7 @@ class SendMessageController extends Controller
                 $data = $request->validated();
                 $message=  message::query()->create(['message'=>Crypt::encryptString($data['message']), 'sender_id'=>auth()->id(), 'group_id'=>$group_id]);
                 $message =  MessageResource::make($message)->resolve();
+                broadcast(new NewMessageEvent($message, $group_id))->toOthers();
                 broadcast(new MessageEvent($message))->toOthers();
                 return $message;
             }

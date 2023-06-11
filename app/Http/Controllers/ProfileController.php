@@ -12,6 +12,7 @@ class ProfileController extends Controller
      */
     public function index(Request $request, $user_id = null)
     {
+
         if ($user_id!==null)
         {
             $user = User::query()->find($user_id);

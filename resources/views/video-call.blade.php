@@ -8,13 +8,12 @@
     <meta name="author" content="name">
     <meta name="description" content="description here">
     <meta name="keywords" content="keywords,here">
-
-    @vite(['resources/js/app.js','resources/css/app.css'])
-
+  @vite(['resources/js/api.js', 'resources/js/main.js'])
 </head>
 <body>
-<div class="app">
-    @yield('content')
-</div>
+<video id="localVideo"></video>
+<video id="remoteVideo"></video>
+
 </body>
 </html>
+

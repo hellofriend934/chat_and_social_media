@@ -25,16 +25,10 @@ class OrderFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'customer.first_name'=>['required'],
-            'customer.last_name'=>['required'],
-            'customer.email'=>['required'],
-            'customer.phone'=>['required'],
-            'customer.city'=>['sometimes'],
-            'customer.address'=>['sometimes'],
-            'create_account'=>['boolean'],
-            'password'=>request()->boolean('create_account') ? ['required'] : ['sometimes'],
-            'delivery_type_id'=>['required','exists:delivery_types,id'],
-            'payment_method_id'=>['required','exists:payment_methods,id'],
+            'credit-expiry'=>['required','string','min:5'],
+            'card_number'=>['required','min:16','max:16'],
+            'cvc'=>['required','string','max:3'],
+            'email'=>['required','email:dns'],
 
         ];
     }

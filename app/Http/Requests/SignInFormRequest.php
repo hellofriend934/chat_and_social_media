@@ -27,7 +27,7 @@ class SignInFormRequest extends FormRequest
     {
         return [
             'email'=>['required','email:dns'],
-            'password'=>['required']
+            'password'=>['required'],
         ];
     }
     public function messages()

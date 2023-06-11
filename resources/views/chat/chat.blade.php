@@ -2,7 +2,6 @@
 @section('content')
     @include('shared.header')
 
-
 <div class="flex align-items-center">
 @if(request()->session()->has('notice'))
     <div class="flex items-left bg-blue-500 text-white text-sm font-bold px-4 py-3" role="alert">
@@ -103,7 +102,7 @@
                                 <tbody>
                                 @foreach($users as $user)
                                 <tr>
-                                    <td>{{$user->name}}</td>
+                                    <td><a href="/profile/{{$user->id}}">{{$user->name}}</a> </td>
                                     <td>{{$user->status}}</td>
                                     @if($user->status == 'blocked_user')
                                         <td><a href="{{route('unBlockUserChat',[$user, $group_id])}}">разблокировать</a></td>
@@ -133,7 +132,7 @@
                                 @foreach($users as $user)
                                     @if($user!== null)
                                     <tr>
-                                        <td>{{$user->name}}</td>
+                                        <td><a href="/profile/{{$user->id}}">{{$user->name}}</a> </td>
                                         <td>{{$user->status}}</td>
                                     </tr>
                                     @endif

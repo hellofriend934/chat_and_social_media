@@ -27,7 +27,8 @@ class User extends Authenticatable
         'email',
         'password',
         'bio',
-        'TwoFa'
+        'TwoFa',
+        'github_id'
     ];
 
 
@@ -68,4 +69,14 @@ class User extends Authenticatable
     }
 
 
+    public function likes()
+    {
+        return $this->belongsToMany(ChannelPost::class,'like_posts','user_id','channel_post_id');
+    }
+
+
+    public function status()
+    {
+        return $this->belongsTo(Order::class,'user_id','id');
+    }
 }

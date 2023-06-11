@@ -21,6 +21,7 @@
         "vue": "^3.2.37"
     },
     "dependencies": {
+        "agora-rtc-sdk-ng": "^4.17.2",
         "daisyui": "^2.51.6",
         "vue": "^3.3.4"
     }

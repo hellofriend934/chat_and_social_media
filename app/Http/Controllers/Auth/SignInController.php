@@ -23,7 +23,7 @@ class SignInController extends Controller
     public function signIn(SignInFormRequest $request)
     {
         $data =  $request->validated();
-         if (auth()->attempt($data)){
+         if (auth()->attempt($data,$request->post('remember'))){
              request()->session()->regenerate(); //делаем его невалидным
               if (\auth()->user()->TwoFa == 1){
                 return redirect('/2fa');

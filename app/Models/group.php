@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Coderflex\Laravisit\Concerns\CanVisit;
+use Coderflex\Laravisit\Concerns\HasVisits;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class group extends Model
+class group extends Model implements CanVisit
 {
+    use HasVisits;
     use HasFactory;
 
     protected $guarded = false;

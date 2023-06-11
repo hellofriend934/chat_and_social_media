@@ -85,3 +85,16 @@ Route::group(['prefix'=>'admin'],function (){
     Route::get('/block/{user}/{group_id}', 'App\Http\Controllers\Chat\AdminController@blockUser')->name('blockUserChat');
     Route::get('/unblock/{user}/{group_id}', 'App\Http\Controllers\Chat\AdminController@unBlockUser')->name('unBlockUserChat');
 });
+
+use Laravel\Socialite\Facades\Socialite;
+
+Route::get('/auth/redirect', '\App\Http\Controllers\Auth\SocialiteController@index');
+Route::get('/auth/callback', '\App\Http\Controllers\Auth\SocialiteController@callback');
+
+Route::get('/like/{post}',\App\Http\Controllers\LikePostController::class);
+
+Route::get('/billing',function (){
+    return view('billing');
+});
+
+Route::post('/order', \App\Http\Controllers\OrderController::class)->name('create.order');

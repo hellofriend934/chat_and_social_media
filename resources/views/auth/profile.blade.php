@@ -36,7 +36,12 @@
 
                             <input class="w-full   p-0 text-sm border-none bg-transparent text-gray-500 focus:outline-none" id="name" name="bio" type="text" placeholder="Write Your Bio" />
                         </label>
-
+                        @if($user->id !== auth()->id())
+                            <p class="text-black text-sm font-normal flex gap gap-2 pt-2">
+                                <a href="/group/with/{{$user->id}}" class="border-2 border-black rounded-md border-b-4 border-l-4 font-black px-2">написать</a>
+                            </p>
+                        @endif
+                        @if($user->id == auth()->id())
                          Включить 2fa?
                         @if(auth()->user()->TwoFa == 1)
                         <input type="radio" name="TwoFa" value="0"> Нет
@@ -46,15 +51,11 @@
                             <input type="radio" name="TwoFa" class="radio" value="1" >ДА
                         @endif
 
-                        @if($user->id !== auth()->id())
-                        <p class="text-black text-sm font-normal flex gap gap-2 pt-2">
-                            <a href="/group/with/{{$user->id}}" class="border-2 border-black rounded-md border-b-4 border-l-4 font-black px-2">написать</a>
-                        </p>
                         @endif
-
                         <Button class="mt-5 border-2 px-5 py-2 rounded-lg border-black border-b-4 font-black translate-y-2 border-l-4 mb-4">
                             Submit
                         </Button>
+                        <a href="/videocall">позвонить</a>
                     </form>
                 </div>
             </div>
